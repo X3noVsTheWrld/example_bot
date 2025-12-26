@@ -1,6 +1,7 @@
 import discord
 from dotenv import load_dotenv
 import os
+import random
 
 #load variables from .env file
 load_dotenv()
@@ -16,6 +17,8 @@ with open("words.txt", "r") as file:
         word = line.strip()
         words.append(word)
 
+scrambled_word = ""
+
 class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -25,6 +28,20 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
         print(message.author.id)
+        if message.content == "/scramble":
+            await message.channel.send("Sending scramble word...")
+            random_word = random.choice(words)
+            print(random_word)
+            random_letters = list(random_word)
+            random.shuffle(random_letters)
+            global scrambled_word
+            scrambled_word = random_word
+            scramble = "".join(random_letters)
+            await message.channel.send("***Unscramble this word***: " + scramble)
+
+        if message.content == scrambled_word:
+            await message.channel.send("Hey, " + message.author.name + " got the scramble puzzle correct!")
+
         if message.author.id == omega_id:
             await message.channel.send("Can't do the Moon Easter Egg Solo, you Nincompoop.")
         if message.author.id == jeff_id:

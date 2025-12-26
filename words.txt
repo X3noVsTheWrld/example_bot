@@ -16,5 +16,5 @@ computer
 warframe
 alphabet
 science
-nuetralize
+neutralize
 lights
