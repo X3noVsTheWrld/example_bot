@@ -10,6 +10,11 @@ omega_id = os.getenv('omega_id')
 omegabot_id = os.getenv('omegabot_id')
 jeff_id = os.getenv('jeff_id')
 
+words = []
+with open("words.txt", "r") as file:
+    for line in file:
+        word = line.strip()
+        words.append(word)
 
 class MyClient(discord.Client):
     async def on_ready(self):
