@@ -6,9 +6,9 @@ import os
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
 
-omega_id = 219593665201438720
-omegabot_id = 1434682224070103162
-jeff_id = 1096612044897255444
+omega_id = os.getenv('omega_id')
+omegabot_id = os.getenv('omegabot_id')
+jeff_id = os.getenv('jeff_id')
 
 
 class MyClient(discord.Client):
